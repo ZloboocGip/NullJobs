@@ -37,8 +37,6 @@ Designed for modern Spigot/Paper servers with minimal performance impact.
 
 AUTOMINE
 
-upload_2026-5-25_1-31-3.png
-
 Automated regenerating mines.
 
 Players mine ores while the mine refreshes automatically after a configurable timer.
@@ -61,8 +59,6 @@ Perfect for:
 ━━━━━━━━━━━━━━━━━━━━━━
 
 AUTOFOREST
-
-upload_2026-5-25_1-30-40.png
 
 Interactive tree chopping.
 
