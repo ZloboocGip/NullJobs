@@ -1,0 +1,4 @@
+name: NullJobs
+version: '${project.version}'
+main: org.nooll.nulljobs.NullJobs
+api-version: '1.16'
