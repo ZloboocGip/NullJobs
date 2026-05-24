@@ -1,0 +1,96 @@
+settings:
+  prefix: "<gradient:#00ffaa:#00aaff><bold>NullJobs</bold></gradient> <dark_gray>» <reset>"
+
+automine:
+  enabled: true
+  type: items # items, money, both
+  world: "spawn"
+  wg-region: "automine"
+  refresh-interval-seconds: 300
+
+  hologram:
+    enabled: true
+    name: "nulljobs_automine"
+    world: "spawn"
+    x: 0.5
+    y: 90.0
+    z: 0.5
+    lines:
+      - "<gradient:#00ffaa:#00aaff><bold>АвтоШахта</bold></gradient>"
+      - "<gray>Обновление через: <white>{time}</white>"
+  money-commands:
+    - "eco give {player} {amount}"
+
+  replace-blocks:
+    - AIR
+    - STONE
+    - COBBLESTONE
+    - COAL_ORE
+    - IRON_ORE
+    - GOLD_ORE
+    - DIAMOND_ORE
+    - EMERALD_ORE
+    - LAPIS_ORE
+    - REDSTONE_ORE
+    - COPPER_ORE
+
+  mine-blocks:
+    - COAL_ORE:35:1
+    - IRON_ORE:25:2
+    - GOLD_ORE:15:4
+    - REDSTONE_ORE:10:3
+    - LAPIS_ORE:8:3
+    - DIAMOND_ORE:5:10
+    - EMERALD_ORE:2:15
+
+autofish:
+  enabled: true
+  type: items # items, money, both
+  world: "spawn"
+  wg-region: "autofish"
+
+  money-commands:
+    - "eco give {player} {amount}"
+
+  drops:
+    - SALMON:35:2
+    - COD:50:1
+    - TROPICAL_FISH:15:5
+
+autoforest:
+  enabled: true
+  world: "spawn"
+  wg-region: "autoforest"
+
+  hits-per-log: 3
+  restore-delay-seconds: 30
+
+  animation:
+    enabled: true
+    falling-block-life-ticks: 60
+    velocity-y: 0.25
+    velocity-random-xz: 0.15
+
+  rewards:
+    enabled: true
+    type: items # items, money, both
+    money-per-log: 1
+    item: OAK_LOG
+
+  money-commands:
+    - "eco give {player} {amount}"
+automilking:
+  enabled: true
+  world: "spawn"
+  wg-region: "automilking"
+
+  hold-seconds: 3
+  cow-global-cooldown-seconds: 30
+  max-distance: 4.0
+
+  reward:
+    type: both # milk, money, both
+    money: 5
+
+  money-commands:
+    - "eco give {player} {amount}"

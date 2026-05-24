@@ -1,0 +1,34 @@
+no-permission: "{prefix}<red>Нет прав: <white>{permission}</white>."
+
+nulljobs:
+  usage: "{prefix}<gray>Использование: <white>/{label} <reload|version></white>"
+  reloaded: "{prefix}<green>NullJobs перезагружен."
+  version: "{prefix}<gray>Версия NullJobs: <white>{version}</white>."
+
+automine:
+  deny-break: "{prefix}<red>Этот блок нельзя ломать в автошахте."
+  reward-item: "{prefix}<green>Ты добыл <white>{block}</white>."
+  reward-money: "{prefix}<green>Ты получил <white>{amount}</white> монет за <white>{block}</white>."
+  reward-both: "{prefix}<green>Ты добыл <white>{block}</white> и получил <white>{amount}</white> монет."
+
+autofish:
+  reward-item: "{prefix}<green>Ты поймал <white>{item}</white>."
+  reward-money: "{prefix}<green>Ты получил <white>{amount}</white> монет за улов <white>{item}</white>."
+  reward-both: "{prefix}<green>Ты поймал <white>{item}</white> и получил <white>{amount}</white> монет."
+
+autoforest:
+  deny-break: "{prefix}<red>Это нельзя ломать."
+  progress: "{prefix}<gray>Прогресс рубки: <white>{hits}</white>/<white>{needed}</white>."
+  felled: "{prefix}<green>Дерево срублено. Брёвен: <white>{logs}</white>."
+  reward-item: "{prefix}<green>Ты получил <white>{logs}</white> брёвен."
+  reward-money: "{prefix}<green>Ты получил <white>{amount}</white> монет."
+  reward-both: "{prefix}<green>Ты получил <white>{logs}</white> брёвен и <white>{amount}</white> монет."
+automilking:
+  started: "{prefix}&7Доение началось. Держи ведро и смотри на корову."
+  progress: "{prefix}&eДоение: &f{progress}/{needed}"
+  cancelled: "{prefix}&cДоение отменено."
+  cooldown: "{prefix}&cЭту корову уже доили. Подожди &f{time}&c сек."
+  wrong-item: "{prefix}&cНужно держать обычное ведро."
+  completed-milk: "{prefix}&aТы получил ведро молока."
+  completed-money: "{prefix}&aТы получил &f{amount}&a монет за доение."
+  completed-both: "{prefix}&aТы получил ведро молока и &f{amount}&a монет."

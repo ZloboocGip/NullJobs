@@ -1,4 +1,27 @@
 name: NullJobs
-version: '${project.version}'
+version: '1.1'
 main: org.nooll.nulljobs.NullJobs
 api-version: '1.16'
+softdepend:
+  - WorldEdit
+  - WorldGuard
+  - Multiverse-Core
+  - DecentHolograms
+commands:
+  nulljobs:
+    aliases: [njobs, nj]
+    description: Main NullJobs command
+    permission: nulljobs.command.nulljobs
+
+permissions:
+  nulljobs.admin:
+    default: op
+    children:
+      nulljobs.command.nulljobs: true
+      nulljobs.command.reload: true
+
+  nulljobs.command.nulljobs:
+    default: op
+
+  nulljobs.command.reload:
+    default: op
