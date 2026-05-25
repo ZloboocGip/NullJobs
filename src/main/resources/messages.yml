@@ -23,6 +23,7 @@ autoforest:
   reward-item: "{prefix}<green>Ты получил <white>{logs}</white> брёвен."
   reward-money: "{prefix}<green>Ты получил <white>{amount}</white> монет."
   reward-both: "{prefix}<green>Ты получил <white>{logs}</white> брёвен и <white>{amount}</white> монет."
+
 automilking:
   started: "{prefix}&7Доение началось. Держи ведро и смотри на корову."
   progress: "{prefix}&eДоение: &f{progress}/{needed}"
@@ -32,3 +33,13 @@ automilking:
   completed-milk: "{prefix}&aТы получил ведро молока."
   completed-money: "{prefix}&aТы получил &f{amount}&a монет за доение."
   completed-both: "{prefix}&aТы получил ведро молока и &f{amount}&a монет."
+autoshearing:
+  started: "{prefix}&7Стрижка началась. Держи ножницы и смотри на овцу."
+  progress: "{prefix}&eСтрижка: &f{progress}/{needed}"
+  cancelled: "{prefix}&cСтрижка отменена."
+  cooldown: "{prefix}&cЭту овцу уже стригли. Подожди &f{time}&c сек."
+  wrong-item: "{prefix}&cНужно держать ножницы."
+  already-sheared: "{prefix}&cЭта овца уже без шерсти."
+  completed-wool: "{prefix}&aТы получил шерсть цвета &f{color}&a."
+  completed-money: "{prefix}&aТы получил &f{amount}&a монет за шерсть &f{color}&a."
+  completed-both: "{prefix}&aТы получил шерсть &f{color}&a и &f{amount}&a монет."

@@ -25,6 +25,7 @@ public final class AutoMilkingManager implements Listener {
     private final NullJobs plugin;
     private final Map<UUID, AutoMilkingSession> sessions = new HashMap<UUID, AutoMilkingSession>();
     private final Map<UUID, Long> cowCooldowns = new HashMap<UUID, Long>();
+    private final Map<UUID, Location> cowOriginalLocations = new HashMap<UUID, Location>();
 
     private BukkitTask task;
 
@@ -53,8 +54,17 @@ public final class AutoMilkingManager implements Listener {
             task = null;
         }
 
+        for (UUID cowUuid : new java.util.ArrayList<UUID>(cowOriginalLocations.keySet())) {
+            Entity entity = plugin.getServer().getEntity(cowUuid);
+
+            if (entity instanceof Cow) {
+                restoreCowVisual((Cow) entity);
+            }
+        }
+
         sessions.clear();
         cowCooldowns.clear();
+        cowOriginalLocations.clear();
     }
 
     @EventHandler
@@ -169,6 +179,19 @@ public final class AutoMilkingManager implements Listener {
         long cooldown = Math.max(1L, plugin.jobsConfig().config().getLong("automilking.cow-global-cooldown-seconds", 30L));
         cowCooldowns.put(cow.getUniqueId(), System.currentTimeMillis() + cooldown * 1000L);
 
+        applyCowVisual(cow);
+
+        plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+            @Override
+            public void run() {
+                if (!cow.isDead() && cow.isValid()) {
+                    restoreCowVisual(cow);
+                }
+
+                cowCooldowns.remove(cow.getUniqueId());
+            }
+        }, cooldown * 20L);
+
         JobRewardMode mode = JobRewardMode.from(
                 plugin.jobsConfig().config().getString("automilking.reward.type", "milk")
         );
@@ -202,6 +225,44 @@ public final class AutoMilkingManager implements Listener {
         }
 
         plugin.messages().path(player, "automilking.completed-milk");
+    }
+
+    private void applyCowVisual(Cow cow) {
+        if (!plugin.jobsConfig().config().getBoolean("automilking.cooldown-visual.enabled", false)) {
+            return;
+        }
+
+        UUID uuid = cow.getUniqueId();
+
+        if (!cowOriginalLocations.containsKey(uuid)) {
+            cowOriginalLocations.put(uuid, cow.getLocation().clone());
+        }
+
+        if (plugin.jobsConfig().config().getBoolean("automilking.cooldown-visual.disable-ai", true)) {
+            cow.setAI(false);
+        }
+
+        if (plugin.jobsConfig().config().getBoolean("automilking.cooldown-visual.disable-gravity", true)) {
+            cow.setGravity(false);
+        }
+
+        double lowerY = plugin.jobsConfig().config().getDouble("automilking.cooldown-visual.lower-y", 0.35D);
+
+        Location lowered = cow.getLocation().clone().subtract(0.0D, lowerY, 0.0D);
+        cow.teleport(lowered);
+    }
+
+    private void restoreCowVisual(Cow cow) {
+        UUID uuid = cow.getUniqueId();
+
+        Location original = cowOriginalLocations.remove(uuid);
+
+        if (original != null && cow.isValid() && !cow.isDead()) {
+            cow.teleport(original);
+        }
+
+        cow.setAI(true);
+        cow.setGravity(true);
     }
 
     private boolean hasBucket(Player player) {

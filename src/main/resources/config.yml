@@ -83,7 +83,11 @@ automilking:
   enabled: true
   world: "spawn"
   wg-region: "automilking"
-
+  cooldown-visual:
+    enabled: true
+    lower-y: 0.35
+    disable-ai: true
+    disable-gravity: true
   hold-seconds: 3
   cow-global-cooldown-seconds: 30
   max-distance: 4.0
